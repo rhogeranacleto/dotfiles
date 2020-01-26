@@ -1,0 +1,227 @@
+# i3 config file (v4) for Regolith Desktop Environment
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+# This defines which key super maps to on your keyboard.  
+# Alt key is Mod1, and Windows key is Mod4
+set $mod Mod4
+set $alt Mod1
+
+# Single and dual screen
+exec --no-startup-id xrandr --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate left --output eDP-1 --primary --mode 1366x768 --pos 1080x512 --rotate normal
+
+# i3xrocks config file
+set $i3xrocks_config /etc/regolith/i3xrocks/config
+
+# compton config file
+set $compton_config /etc/regolith/compton/config
+
+# path to terminal. Override this to specify a custom terminal.
+set $terminal_path /usr/bin/st
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+hide_edge_borders smart
+
+# start a terminal
+bindsym $mod+Return exec $terminal_path
+
+# start a web browser
+bindsym $mod+Shift+Return exec /usr/bin/sensible-browser
+
+# kill focused window
+bindsym $mod+Shift+q kill
+bindsym $mod+q kill
+
+set_from_resource $rofiTheme rofi.theme "regolith-theme"
+
+# rofi app and window launchers
+bindsym $mod+space exec rofi -show drun -theme $rofiTheme
+bindsym $mod+Shift+space exec rofi -show run -theme $rofiTheme
+bindsym $mod+Ctrl+space exec rofi -show window -theme $rofiTheme
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move windows in workspaces
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# toggle split orientation
+bindsym $mod+BackSpace split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change gaps interactively
+bindsym $mod+minus gaps inner current minus 6
+bindsym $mod+plus gaps inner current plus 6
+
+# show/hide keybindings
+bindsym $mod+Shift+question exec --no-startup-id /usr/bin/conky-toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+t focus mode_toggle
+
+# toggle tabbed mode
+bindsym $mod+t layout toggle tabbed splith splitv
+
+# move to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# cycle across workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# move focused container to workspace, move to workspace
+bindsym $mod+$alt+1 move container to workspace $ws1; workspace $ws1  
+bindsym $mod+$alt+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+$alt+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+$alt+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+$alt+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+$alt+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+$alt+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+$alt+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+$alt+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+$alt+0 move container to workspace $ws10; workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Logout of session
+bindsym $mod+Shift+e exec /usr/bin/gnome-session-quit --logout
+
+# Reboot computer
+bindsym $mod+Shift+b exec /usr/bin/gnome-session-quit --reboot
+
+# Power off computer
+bindsym $mod+Shift+p exec /usr/bin/gnome-session-quit --power-off
+
+# lock the screen
+bindsym $mod+Escape exec gnome-screensaver-command --lock
+
+# put the system to sleep
+bindsym $mod+Shift+s exec systemctl suspend
+
+# shortcuts for common system configuration tasks
+bindsym $mod+c exec gnome-control-center
+bindsym $mod+w exec gnome-control-center wifi
+bindsym $mod+b exec gnome-control-center bluetooth
+bindsym $mod+d exec gnome-control-center display
+bindsym $mod+n exec gnome-control-center network
+bindsym $mod+p exec gnome-control-center power
+bindsym $mod+s exec gnome-control-center sound
+
+# resize window (you can also use the mouse for that)
+mode "Resize Mode" {
+  # These bindings trigger as soon as you enter the resize mode
+  bindsym Left resize shrink width 6 px or 6 ppt
+  bindsym Down resize grow height 6 px or 6 ppt
+  bindsym Up resize shrink height 6 px or 6 ppt
+  bindsym Right resize grow width 6 px or 6 ppt
+
+  bindsym Shift+Left resize shrink width 12 px or 12 ppt
+  bindsym Shift+Down resize grow height 12 px or 12 ppt
+  bindsym Shift+Up resize shrink height 12 px or 12 ppt
+  bindsym Shift+Right resize grow width 12 px or 12 ppt
+
+  bindsym h resize shrink width 6 px or 6 ppt
+  bindsym k resize grow height 6 px or 6 ppt
+  bindsym j resize shrink height 6 px or 6 ppt
+  bindsym l resize grow width 6 px or 6 ppt
+
+  bindsym Shift+h resize shrink width 12 px or 12 ppt
+  bindsym Shift+k resize grow height 12 px or 12 ppt
+  bindsym Shift+j resize shrink height 12 px or 12 ppt
+  bindsym Shift+l resize grow width 12 px or 12 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "Resize Mode"
+
+# Disable titlebar
+new_window pixel 1
+new_float pixel 1
+
+# Gaps (i3-gaps)
+gaps inner 15
+gaps outer 1
+
+# Only enable gaps on a workspace when there is at least one container
+# smart_gaps off
+
+# Window Border color
+# class                 border                             background                         text                               indicator                          child_border
+client.focused          $focused.color.border              $focused.color.background          $focused.color.text                $focused.color.indicator           $focused.color.child_border
+client.focused_inactive $focused_inactive.color.border     $focused_inactive.color.background $focused_inactive.color.text       $focused_inactive.color.indicator  $focused_inactive.color.child_border
+client.unfocused        $unfocused.color.border            $unfocused.color.background        $unfocused.color.text              $unfocused.color.indicator         $unfocused.color.child_border
+client.urgent           $urgent.color.border               $urgent.color.background           $urgent.color.text                 $urgent.color.indicator            $urgent.color.child_border
+
+# Enable popup during fullscreen
+popup_during_fullscreen smart
+
+# window focus follows your mouse movements as the mouse crosses window borders
+focus_follows_mouse no
+
+# Run programs when i3 starts
+
+# Start the composite manager
+exec --no-startup-id compton -f --config $compton_config
+
+# Launch the shortcut Conky window on first login
+exec --no-startup-id /usr/bin/regolith-ftue
+
+# Hide the mouse pointer if unused for a duration
+exec --no-startup-id /usr/bin/unclutter -b
+
+# Refresh wallpaper on screen resolution change
+exec --no-startup-id /usr/bin/xeventbind resolution /usr/bin/wallpaper-refresh
+
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
