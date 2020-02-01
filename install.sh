@@ -10,7 +10,7 @@ yay -Sy ttf-joypixels ttf-croscore noto-fonts-cjk noto-fonts \
 yay -Sy visual-studio-code-bin arandr docker docker-compose google-chrome \
     feh kitty kitty-terminfo nvm-git oh-my-zsh-git polybar-git postman \
     slack-desktop spotify whatsapp-nativefier xclip zsh zsh-autosuggestions \
-    zsh-syntax-highlighting
+    zsh-syntax-highlighting starship
 
 yay -R arcolinux-conky-collection-git atom conky-lua-archers firefox geany \
     gmrun pragha sublime-text-dev termite termite-terminfo variety vi vim \
@@ -25,3 +25,6 @@ sudo cp ./fonts/icomoon.ttf /usr/share/fonts
 # Link all dotfiles into their appropriate locations
 cd $HOME
 ln -sf $DOTFILES_PATH/home/.* .
+
+cd $HOME/.config
+ln -sf $DOTFILES_PATH/config/* .

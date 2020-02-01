@@ -1,0 +1,1 @@
+alias copy="xclip -se c"

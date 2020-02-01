@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/rhogeranacleto/dotfiles/wallpapers/leonardo-da-vinci-madonna-das-rochas.jpg' 

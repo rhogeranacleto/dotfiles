@@ -42,10 +42,10 @@ set $mod Mod4
 
 
 #This is setup for qwerty
-set $up l
-set $down k
-set $left j
-set $right semicolon
+# set $up l
+# set $down k
+# set $left j
+# set $right semicolon
 
 #This is setup for azerty
 #set $up l
@@ -62,38 +62,38 @@ set $right semicolon
 
 # setting variables for later use
 # use xrandr and/or arandr to know the names of your monitors
-exec --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1080x420 --rotate normal --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate left
+exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1080x420 --rotate normal --output HDMI1 --auto --mode 1920x1080 --pos 0x0 --rotate left
 
 
 
 # my current setup
 
-#set $firstMonitor DP3
+#set $externalMonitor DP3
 #set $secondMonitor LVDS1
 
-#set $firstMonitor DVI-I-0
+#set $externalMonitor DVI-I-0
 #set $secondMonitor HDMI-0
 
 
-#set $firstMonitor DVI-0
+#set $externalMonitor DVI-0
 #set $secondMonitor DVI-1
 
-#set $firstMonitor DVI-I-1
+#set $externalMonitor DVI-I-1
 #set $secondMonitor DVI-D-1
 
-set $firstMonitor HDMI1
+set $externalMonitor HDMI1
 set $secondMonitor HDMI2
 
-workspace 1 output $firstMonitor
-workspace 2 output $firstMonitor
-workspace 3 output $firstMonitor
-workspace 4 output $firstMonitor
-workspace 5 output $firstMonitor
-workspace 6 output $secondMonitor
-workspace 7 output $secondMonitor
-workspace 8 output $secondMonitor
-workspace 9 output $secondMonitor
-workspace 10 output $secondMonitor
+workspace 1 output $externalMonitor
+workspace 3 output $externalMonitor
+workspace 5 output $externalMonitor
+workspace 7 output $externalMonitor
+workspace 9 output $externalMonitor
+# workspace 6 output $secondMonitor
+# workspace 7 output $secondMonitor
+# workspace 8 output $secondMonitor
+# workspace 9 output $secondMonitor
+# workspace 10 output $secondMonitor
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -126,7 +126,7 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 #####################################################################################################################
 
 # start dmenu
-bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#ededed' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=23'
 
 # start rofi small
 bindsym $mod+space exec --no-startup-id rofi -show run -font "Noto Sans 13"
@@ -249,6 +249,9 @@ bindsym Mod1+Ctrl+Left workspace prev
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+bindsym $mod+j move workspace to output left
+bindsym $mod+k move workspace to output right
+
 
 
 
@@ -348,11 +351,11 @@ font pango:Noto Mono Regular 13
 
 # Workspace 1 browser related
 #assign [class="Firefox|Vivaldi-stable|Vivaldi-snapshot|Opera"]                      → 1
-#assign [class="Chromium|Google-chrome"]                                             → 1
+assign [class="Chromium|Google-chrome"]                                             → 1
 
 # Workspace 2 text editor related
 #assign [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"]       → 2
-#assign [class="Xed|xed|Brackets|Atom|Code|Geany"]                                   → 2
+assign [class="Code"]                                   → 2
 
 # Workspace 3 Inkscape
 #assign [class="Inkscape"]                                                           → 3
@@ -362,8 +365,9 @@ font pango:Noto Mono Regular 13
 
 # Workspace 5 Images and meld
 #assign [class="ristretto|Ristretto|shotwell|Shotwell|Xviewer|Nitrogen"]             → 5
-#assign [class="feh|gthumb|Gthumb|eog|Eog|Pinta|pixeluvo|Pixeluvo"]                  → 5
-#assign [class="Meld"]                                                               → 5
+assign [class="Slack"]                  → 5
+for_window [class="Slack"] move to workspace 5
+#assign [class="Meld"]                   → 5
 
 # Workspace 6 all video related software
 #assign [class="Vlc|vlc"]                                                            → 6
@@ -378,9 +382,9 @@ font pango:Noto Mono Regular 13
 #assign [class="Geary|Evolution"]                                                    → 9
 
 # Workspace 10 music related
-#assign [class="Spotify|spotify"] → 10
+assign [class="Spotify|spotify"] → 10
 #fix for spotify not moving to workspace 10
-#for_window [class="Spotify"] move to workspace 10
+for_window [class="Spotify"] move to workspace 10
 
 
 
@@ -392,22 +396,22 @@ font pango:Noto Mono Regular 13
 # USER APPLICATIONS TO START AT BOOT
 
 #browser
-#exec --no-startup-id vivaldi-stable
-for_window [class="Vivaldi-stable"] focus
+exec --no-startup-id google-chrome
+for_window [class="Google-chrome"] focus
 
 #text-editor
 #exec --no-startup-id geany
 #exec --no-startup-id atom
 
 #file manager
-exec --no-startup-id thunar
+# exec --no-startup-id thunar
 
 #Mail clients
 #exec --no-startup-id evolution
 
 #Music
 #exec --no-startup-id spotify
-for_window [class="Spotify"] focus
+# for_window [class="Spotify"] focus
 
 
 
@@ -530,12 +534,12 @@ bindsym $mod+F2 exec --no-startup-id code;focus
 # bindsym control+mod1+w exec --no-startup-id geany;focus
 
 #workspace 3 related
-# bindsym $mod+F3 exec --no-startup-id inkscape;focus
 
 #workspace 4 related
 # bindsym $mod+F4 exec --no-startup-id gimp;focus
 
 #workspace 5 related
+bindsym $mod+F5 exec --no-startup-id slack;focus
 # bindsym $mod+F5 exec --no-startup-id meld;focus
 # bindsym control+mod1+i exec --no-startup-id nitrogen;focus
 
@@ -830,7 +834,7 @@ mode "$mode_gaps_outer" {
 #####################################################################################################################
 
 #if you want transparency on non-focused windows, ...
-exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
+# exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
 
 
 # DarkGrey background with white text - not focus grey background - black text
