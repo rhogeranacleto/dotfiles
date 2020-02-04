@@ -575,8 +575,8 @@ bindsym control+mod1+s exec --no-startup-id spotify;focus
 
 
 bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
-bindsym Control+Print exec --no-startup-id xfce4-screenshooter
-bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
+bindsym Control+Shift+Print exec --no-startup-id xfce4-screenshooter
+bindsym Control+Print exec --no-startup-id gnome-screenshot -i
 #bindsym shift+Print exec --no-startup-id shutter
 
 
