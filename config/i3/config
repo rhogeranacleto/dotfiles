@@ -62,7 +62,7 @@ set $mod Mod4
 
 # setting variables for later use
 # use xrandr and/or arandr to know the names of your monitors
-exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1080x420 --rotate normal --output HDMI1 --auto --mode 1920x1080 --pos 0x0 --rotate left
+# exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1080x420 --rotate normal --output HDMI1 --auto --mode 1920x1080 --pos 0x0 --rotate left
 
 
 
@@ -249,8 +249,8 @@ bindsym Mod1+Ctrl+Left workspace prev
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-bindsym $mod+j move workspace to output left
-bindsym $mod+k move workspace to output right
+bindsym $mod+j move workspace to output top
+bindsym $mod+k move workspace to output down
 
 
 
@@ -523,7 +523,9 @@ bindsym control+mod1+u exec --no-startup-id pavucontrol
 #workspace 1 related
 bindsym $mod+F1 exec --no-startup-id exo-open --launch webbrowser;focus
 #qwerty/azerty conflict with w
-bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
+# bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
+
+bindsym $mod+w sticky toggle
 # bindsym control+mod1+f exec --no-startup-id firefox;focus
 # bindsym control+mod1+v exec --no-startup-id vivaldi-stable;focus
 bindsym control+mod1+g exec --no-startup-id chromium;focus
@@ -626,6 +628,8 @@ for_window [title="Copying"] floating enable
 for_window [title="Deleting"] floating enable
 for_window [title="Moving"] floating enable
 for_window [title="^Terminator Preferences$"] floating enable
+
+for_window [title="Android Emulator"] floating enable
 
 
 #for_window [window_role="^gimp-toolbox-color-dialog$"] floating enable
