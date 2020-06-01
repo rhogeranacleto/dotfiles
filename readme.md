@@ -1,8 +1,6 @@
-<div style="text-align: center">
-  <h1>
-    🌈 rhogeranacleto's dotfiles 🌈
-  </h1>
-</div>
+<h1 align="center">
+  🌈 rhogeranacleto's dotfiles 🌈
+</h1>
 
 This is my dotfiles configuration.
 
@@ -32,22 +30,14 @@ I'm just kidding, just use it!
 
 Here some llama images that I like to make you happy 🥰
 
-<div style="text-align: center">
+<p align="center"><img src="https://pbs.twimg.com/media/DEy9W9AXgAEZEDa.jpg:large" /></p>
+<p align="center"><i>llama with glasses drinking</i></p>
 
-![Llama drinking](https://pbs.twimg.com/media/DEy9W9AXgAEZEDa.jpg:large)
+<p align="center"><img src="https://media0.giphy.com/media/1081l2F7uGjkK4/200.gif" /></p>
+<p align="center"><i>llama arrogant but still cute</i></p>
 
-_llama with glasses drinking_
+<p align="center"><img src="https://media3.giphy.com/media/9ohlKnRDAmotG/giphy.gif" /></p>
+<p align="center"><i>llama facing</i></p>
 
-![llama arrogant](https://media0.giphy.com/media/1081l2F7uGjkK4/200.gif)
-
-_llama arrogant but still cute_
-
-![llama facing](https://media3.giphy.com/media/9ohlKnRDAmotG/giphy.gif)
-
-_llama facing_
-
-![llama arrogant](https://media.giphy.com/media/KbAMAJ0za8qNW/giphy.gif)
-
-_another arrogant llama (yeah they are very arrogant_
-
-</div>
+<p align="center"><img src="https://media.giphy.com/media/KbAMAJ0za8qNW/giphy.gif" /></p>
+<p align="center"><i>another arrogant llama (yeah they are very arrogant)</i></p>
