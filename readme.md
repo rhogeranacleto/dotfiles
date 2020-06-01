@@ -1,8 +1,8 @@
-<center>
+<div style="text-align: center">
   <h1>
     🌈 rhogeranacleto's dotfiles 🌈
   </h1>
-</center>
+</div>
 
 This is my dotfiles configuration.
 
@@ -32,7 +32,7 @@ I'm just kidding, just use it!
 
 Here some llama images that I like to make you happy 🥰
 
-<center>
+<div style="text-align: center">
 
 ![Llama drinking](https://pbs.twimg.com/media/DEy9W9AXgAEZEDa.jpg:large)
 
@@ -50,4 +50,4 @@ _llama facing_
 
 _another arrogant llama (yeah they are very arrogant_
 
-</center>
+</div>
