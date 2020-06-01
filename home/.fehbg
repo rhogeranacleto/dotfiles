@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill  ~/dotfiles/wallpapers/photo-of-a-pathway-1690355.jpg 
+feh --no-fehbg --bg-fill  --randomize ~/dotfiles/wallpapers/*
