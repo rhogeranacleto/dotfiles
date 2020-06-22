@@ -1,0 +1,5 @@
+#!/bin/sh
+
+notify-send -u low "autorandr: restarting polybar"
+
+~/.config/polybar/launch.sh

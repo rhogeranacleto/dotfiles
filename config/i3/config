@@ -63,7 +63,8 @@ set $mod Mod4
 # setting variables for later use
 # use xrandr and/or arandr to know the names of your monitors
 # exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1080x420 --rotate normal --output HDMI1 --auto --mode 1920x1080 --pos 0x0 --rotate left
-exec_always --no-startup-id ~/.screenlayout/mlabs.sh
+exec_always --no-startup-id autorandr --change
+# exec_always --no-startup-id ~/.screenlayout/mlabs.sh
 
 
 
