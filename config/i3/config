@@ -83,19 +83,20 @@ exec_always --no-startup-id autorandr --change
 #set $externalMonitor DVI-I-1
 #set $secondMonitor DVI-D-1
 
+set $primary eDP1
 set $externalMonitor HDMI1
-set $secondMonitor HDMI2
 
 workspace 1 output $externalMonitor
 workspace 3 output $externalMonitor
 workspace 5 output $externalMonitor
 workspace 7 output $externalMonitor
 workspace 9 output $externalMonitor
-# workspace 6 output $secondMonitor
-# workspace 7 output $secondMonitor
-# workspace 8 output $secondMonitor
-# workspace 9 output $secondMonitor
-# workspace 10 output $secondMonitor
+
+workspace 2 output $primary
+workspace 4 output $primary
+workspace 6 output $primary
+workspace 8 output $primary
+workspace 10 output $primary
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -251,7 +252,7 @@ bindsym Mod1+Ctrl+Left workspace prev
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-bindsym $mod+j move workspace to output top
+# bindsym $mod+j move workspace to output top
 bindsym $mod+k move workspace to output down
 
 
@@ -481,7 +482,7 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 #bindsym $mod+c exec --no-startup-id conky-toggle
 
 # terminal
-bindsym $mod+Return exec --no-startup-id kitty;focus
+bindsym $mod+Return exec --no-startup-id kitty --directory $([[ -f /tmp/.last_folder_visited ]] && cat /tmp/.last_folder_visited || echo "~");focus
 bindsym $mod+KP_Enter exec --no-startup-id kitty;focus
 # bindsym control+mod1+t exec --no-startup-id kitty; focus
 # bindsym control+mod1+Return exec --no-startup-id kitty; focus
@@ -578,9 +579,9 @@ bindsym control+mod1+s exec --no-startup-id spotify;focus
 #####################################################################################################################
 
 
-bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+bindsym Control+Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
 bindsym Control+Shift+Print exec --no-startup-id xfce4-screenshooter
-bindsym Control+Print exec --no-startup-id gnome-screenshot -i
+bindsym Print exec --no-startup-id gnome-screenshot -i
 #bindsym shift+Print exec --no-startup-id shutter
 
 
@@ -608,6 +609,7 @@ for_window [class="Font-manager"] floating enable
 for_window [class="Nitrogen"] floating disable
 for_window [class="Pavucontrol"] floating disable
 for_window [class="Peek"] floating enable
+for_window [class="screenshot"] floating enable
 for_window [class="^Skype$"] floating enable
 for_window [class="^Spotify$"] floating disable
 for_window [class="System-config-printer.py"] floating enable
@@ -784,6 +786,7 @@ gaps inner 5
 gaps outer 0
 #smart_gaps on
 #smart_borders on
+# border_radius 2
 
 
 

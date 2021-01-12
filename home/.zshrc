@@ -35,6 +35,16 @@ fi
 [[ -f "/usr/share/nvm/init-nvm.sh" ]] &&
 	source /usr/share/nvm/init-nvm.sh
 
+save_folder() {
+  echo "$PWD" > /tmp/.last_folder_visited
+}
+
+open_kitty() {
+  current_dir=$([[ -f /tmp/.last_folder_visited ]] && cat /tmp/.last_folder_visited || echo "~")
+
+  kitty --directory $current_dir
+}
+
 # auto loading node version if has .nvmrc
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -45,7 +55,10 @@ load-nvmrc() {
     nvm use default
   fi
 }
+
 add-zsh-hook chpwd load-nvmrc
+add-zsh-hook chpwd save_folder
+
 load-nvmrc
 
 bindkey '^H' backward-kill-word

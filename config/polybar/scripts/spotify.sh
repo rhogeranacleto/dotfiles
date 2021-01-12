@@ -13,11 +13,13 @@ main() {
     meta=$(dbus-send --print-reply --dest=${domain}.spotify \
         /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:${domain}.Player string:Metadata)
 
+    status=`dbus-send --print-reply --dest=${domain}.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'PlaybackStatus' | egrep -A 1 "string" | cut -b 26- | cut -d '"' -f 1 | egrep -v ^$`
+
     artist=$(echo "$meta" | sed -nr '/xesam:artist"/,+2s/^ +string "(.*)"$/\1/p' | tail -1 | sed "s/\&/+/g" | sed 's/\//\\\//g')
     album=$(echo "$meta" | sed -nr '/xesam:album"/,+2s/^ +variant +string "(.*)"$/\1/p' | tail -1 | sed 's/\//\\\//g')
     title=$(echo "$meta" | sed -nr '/xesam:title"/,+2s/^ +variant +string "(.*)"$/\1/p' | tail -1 | sed "s/\&/+/g" | sed 's/\//\\\//g')
 
-    echo "${*:-%artist% - %title%}" | sed "s/%artist%/$artist/g;s/%title%/$title/g;s/%album%/$album/g"i | sed 's/&/\\&/g'
+    echo "${status} ${*:-%artist% - %title%}" | sed "s/%artist%/$artist/g;s/%title%/$title/g;s/%album%/$album/g"i | sed 's/&/\\&/g'
 }
 
 main "$@"
