@@ -22,6 +22,8 @@ r = requests.get(link.format(
 
 total = r.json()['total_grand']
 
+total = total if total is not None else 0
+
 total_in_hours = total / (1000 * 60 * 60)
 
 hours = int(total_in_hours)
