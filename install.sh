@@ -11,7 +11,7 @@ yay -Sy ttf-joypixels ttf-croscore noto-fonts-cjk noto-fonts \
 
 yay -Sy visual-studio-code-bin arandr docker docker-compose google-chrome \
     feh kitty kitty-terminfo nvm-git oh-my-zsh-git polybar-git postman \
-    slack-desktop spotify whatsapp-nativefier xclip zsh zsh-autosuggestions \
+    slack-desktop spotify xclip zsh zsh-autosuggestions \
     zsh-syntax-highlighting starship autorandr
 
 yay -R arcolinux-conky-collection-git atom conky-lua-archers firefox geany \
